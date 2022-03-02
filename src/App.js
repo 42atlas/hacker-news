@@ -1,8 +1,8 @@
 import "./App.css";
-import DisplayContainer from "./components/DisplayContainer";
+import NewsFeedContainer from "./components/NewsFeedContainer";
 
 function App() {
-  return <DisplayContainer />;
+  return <NewsFeedContainer />;
 }
 
 export default App;

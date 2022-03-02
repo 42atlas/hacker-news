@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const url = "http://hn.algolia.com/api/v1/search?tags=front_page";
 
-function DisplayContainer() {
+function NewsFeedContainer() {
   const [newsFeed, setNewsFeed] = useState(null);
 
   useEffect(() => {
@@ -29,4 +29,4 @@ function DisplayContainer() {
   );
 }
 
-export default DisplayContainer;
+export default NewsFeedContainer;
