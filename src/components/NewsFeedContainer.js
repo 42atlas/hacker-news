@@ -19,11 +19,10 @@ function NewsFeedContainer() {
   }, []);
 
   if (!newsFeed) return <p>Loading...</p>;
-  console.log(newsFeed);
   return (
     <ul>
       {newsFeed.map((element) => {
-        return <li>{element.title}</li>;
+        return <li key={element.objectID}>{element.title}</li>;
       })}
     </ul>
   );
