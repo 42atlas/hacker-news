@@ -1,23 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-const url = "http://hn.algolia.com/api/v1/search?tags=front_page";
-
-function NewsFeedContainer() {
-  const [newsFeed, setNewsFeed] = useState(null);
-
-  useEffect(() => {
-    fetch(url)
-      .then((res) => {
-        if (res.status >= 200 && res.status <= 299) {
-          return res.json();
-        } else {
-          throw Error(res.statusText);
-        }
-      })
-      .then((news) => setNewsFeed(news.hits))
-      .catch((err) => console.log(err));
-  }, []);
-
+function NewsFeedContainer({ url, newsFeed, setNewsFeed }) {
   if (!newsFeed) return <p>Loading...</p>;
   return (
     <ol>
