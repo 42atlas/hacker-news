@@ -20,11 +20,20 @@ function NewsFeedContainer() {
 
   if (!newsFeed) return <p>Loading...</p>;
   return (
-    <ul>
+    <ol>
       {newsFeed.map((element) => {
-        return <li key={element.objectID}>{element.title}</li>;
+        return (
+          <li key={element.objectID}>
+            <a href={element.url}>
+              <div>{element.title}</div>
+            </a>
+            <p style={{ fontSize: 12 }}>
+              {element.created_at} || comments: {element.num_comments}
+            </p>
+          </li>
+        );
       })}
-    </ul>
+    </ol>
   );
 }
 
