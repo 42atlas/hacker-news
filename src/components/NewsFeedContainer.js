@@ -1,6 +1,6 @@
 import React from "react";
 
-function NewsFeedContainer({ url, newsFeed, setNewsFeed }) {
+function NewsFeedContainer({ newsFeed, setNewsFeed }) {
   if (!newsFeed) return <p>Loading...</p>;
   return (
     <ol>
