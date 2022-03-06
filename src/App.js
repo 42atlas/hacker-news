@@ -13,13 +13,14 @@ function App() {
   const [newsFeed, setNewsFeed] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(8);
+  const [postsPerPage] = useState(20);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await api.get(`search?tags=front_page`);
+        const response = await api.get(`search?hitsPerPage=100&&`);
         setNewsFeed(response.data.hits);
+        console.log(response.data);
       } catch (error) {
         console.log(error);
       }
