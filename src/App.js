@@ -50,6 +50,12 @@ function App() {
   const changePage = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+  const previousPage = () => {
+    setCurrentPage((prev) => prev - 1);
+  };
+  const nextPage = () => {
+    setCurrentPage((prev) => prev + 1);
+  };
   return (
     <>
       <SearchBar searchInput={searchInput} setSearchInput={setSearchInput} />
@@ -58,6 +64,8 @@ function App() {
         postsPerPage={postsPerPage}
         totalPosts={newsFeed.length}
         changePage={changePage}
+        previousPage={previousPage}
+        nextPage={nextPage}
       />
     </>
   );
