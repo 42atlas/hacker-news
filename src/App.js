@@ -19,9 +19,9 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await api.get(`search?hitsPerPage=100&&`);
+        const response = await api.get(`search?hitsPerPage=100&&tags=story&&query=${searchInput}`);
         setNewsFeed(response.data.hits);
-        setFiltered(response.data.hits);
+        //setFiltered(response.data.hits);
         
       } catch (error) {
         console.log(error);
@@ -39,13 +39,13 @@ function App() {
     //   })
     //   .then((news) => setNewsFeed(news.hits))
     //   .catch((err) => console.log(err));
-  }, []);
+  }, [searchInput]);
 
   // get post per Page
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = filtered.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPosts = newsFeed.slice(indexOfFirstPost, indexOfLastPost);
   // Change the page
 
   const changePage = (pageNumber) => {
@@ -68,7 +68,7 @@ function App() {
       <NewsFeedContainer  newsFeed={currentPosts}/>
       <Pagination
         postsPerPage={postsPerPage}
-        totalPosts={filtered.length}
+        totalPosts={newsFeed.length}
         changePage={changePage}
         previousPage={previousPage}
         nextPage={nextPage}

@@ -4,18 +4,18 @@ export default function SearchBar({ searchInput, setSearchInput, newsFeed, setNe
  
  
   const handleSubmit = (e) => {
-    const filteredData = newsFeed.filter((item) => {
+    // const filteredData = newsFeed.filter((item) => {
       
-      if (item.title !== '' && item.title !== null){
-        if (item.title.toLowerCase().includes(searchInput.toLowerCase()))
-        {
-          return item;
-        }
-      }else if (searchInput === ''){
-        return item;
-      }  
-    })
-    setNewsFeed(filteredData);
+    //   if (item.title !== '' && item.title !== null){
+    //     if (item.title.toLowerCase().includes(searchInput.toLowerCase()))
+    //     {
+    //       return item;
+    //     }
+    //   }else if (searchInput === ''){
+    //     return item;
+    //   }  
+    // })
+    // setNewsFeed(filteredData);
     e.preventDefault(); 
   };
 
@@ -32,9 +32,9 @@ export default function SearchBar({ searchInput, setSearchInput, newsFeed, setNe
           value={searchInput}
           onChange={handleChange}
         ></input>
-        <button type="submit" name="submit">
+        {/* <button type="submit" name="submit">
           Search
-        </button>
+        </button> */}
       </form>
     </div>
   );
