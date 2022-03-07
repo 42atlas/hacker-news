@@ -24,7 +24,7 @@ const Pagination = ({
           {page}
         </button>
       ))}
-      <button onClick={() => nextPage()}>Next</button>
+      <button onClick={() => nextPage(pages.length)}>Next</button>
     </nav>
   );
 };

@@ -11,7 +11,10 @@ function NewsFeedContainer({ newsFeed, setNewsFeed }) {
               <div>{element.title}</div>
             </a>
             <p style={{ fontSize: 12 }}>
-              {element.created_at} || comments: {element.num_comments}
+              {element.created_at}{" "}
+              {element.num_comments !== 0
+                ? `|| comments: ${element.num_comments}`
+                : null}
             </p>
           </li>
         );
