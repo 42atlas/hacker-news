@@ -16,20 +16,26 @@ function App() {
   const [newsFeed, setNewsFeed] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+
   const [postsPerPage] = useState(20);
   const [loading, setLoading] = useState(false);
+
   // const [filtered, setFiltered] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+
         setLoading(true);
+
         const response = await api.get(
           `search?hitsPerPage=100&&tags=story&&query=${searchInput}`
         );
         setNewsFeed(response.data.hits);
+
         console.log(response.data);
         setLoading(false);
+
       } catch (error) {
         alert("an error has occurred");
         console.log(error);
@@ -55,7 +61,6 @@ function App() {
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = newsFeed.slice(indexOfFirstPost, indexOfLastPost);
-
   // Change the page
 
   const changePage = (pageNumber) => {
@@ -67,6 +72,7 @@ function App() {
   const nextPage = (lastPage) => {
     setCurrentPage((prev) => (currentPage === lastPage ? prev : prev + 1));
   };
+
 
   return (
     <Box
@@ -136,6 +142,7 @@ function App() {
         </Box>
       </Box>
     </Box>
+
   );
 }
 export default App;

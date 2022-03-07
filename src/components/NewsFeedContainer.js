@@ -48,8 +48,10 @@ function NewsFeedContainer({ newsFeed, setNewsFeed }) {
               {element.num_comments !== 0
                 ? `|| comments: ${element.num_comments}`
                 : null}
+
             </p> */}
           </ListItem>
+
         );
       })}
     </List>

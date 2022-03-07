@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, TextField } from "@mui/material";
 
+
 /* import SendIcon from "@mui/icons-material/Send";
 
 import LoadingButton from "@mui/lab/LoadingButton"; */
@@ -14,6 +15,7 @@ export default function SearchBar({
   const handleSubmit = (e) => {
     // const filteredData = newsFeed.filter((item) => {
 
+
     //   if (item.title !== '' && item.title !== null){
     //     if (item.title.toLowerCase().includes(searchInput.toLowerCase()))
     //     {
@@ -21,6 +23,7 @@ export default function SearchBar({
     //     }
     //   }else if (searchInput === ''){
     //     return item;
+
     //   }
     // })
     // setNewsFeed(filteredData);
@@ -37,6 +40,7 @@ export default function SearchBar({
     // } else {
     return setSearchInput(target.value);
     // }
+
   };
 
   /*   const [loading, setLoading] = React.useState(false);
@@ -58,6 +62,7 @@ export default function SearchBar({
           type="search"
           value={searchInput}
           onChange={handleChange}
+
         ></TextField>
 
         {/*       <LoadingButton
@@ -75,5 +80,6 @@ export default function SearchBar({
         ></LoadingButton> */}
       </Box>
     </form>
+
   );
 }

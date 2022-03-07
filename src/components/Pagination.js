@@ -32,6 +32,7 @@ const Pagination = ({
 
   return (
     <nav>
+
       <Stack
         direction="row"
         justifyContent="space-evenly"
@@ -46,6 +47,7 @@ const Pagination = ({
         ))}
         <Buttonx onClick={() => nextPage(pages.length)}>Next</Buttonx>
       </Stack>
+
     </nav>
   );
 };
