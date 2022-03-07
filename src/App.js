@@ -14,20 +14,21 @@ function App() {
   const [searchInput, setSearchInput] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
-  const [filtered,setFiltered] = useState([]);
- 
+  // const [filtered, setFiltered] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await api.get(`search?hitsPerPage=100&&tags=story&&query=${searchInput}`);
+        const response = await api.get(
+          `search?hitsPerPage=100&&tags=story&&query=${searchInput}`
+        );
         setNewsFeed(response.data.hits);
         //setFiltered(response.data.hits);
-        
       } catch (error) {
         console.log(error);
       }
     };
-    
+
     fetchData();
     // fetch(searchUrl)
     //   .then((res) => {
@@ -50,22 +51,24 @@ function App() {
 
   const changePage = (pageNumber) => {
     setCurrentPage(pageNumber);
-    
   };
   const previousPage = () => {
-    setCurrentPage((prev) => prev - 1);
+    setCurrentPage((prev) => (currentPage === 1 ? prev : prev - 1));
   };
-  const nextPage = () => {
-    setCurrentPage((prev) => prev + 1);
+  const nextPage = (lastPage) => {
+    setCurrentPage((prev) => (currentPage === lastPage ? prev : prev + 1));
   };
 
-  
- 
   //console.log(filtered);
   return (
     <>
-      <SearchBar searchInput={searchInput}  setSearchInput={setSearchInput} newsFeed={newsFeed} setNewsFeed={setFiltered}/>
-      <NewsFeedContainer  newsFeed={currentPosts}/>
+      <SearchBar
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+        newsFeed={newsFeed}
+        // setNewsFeed={setFiltered}
+      />
+      <NewsFeedContainer newsFeed={currentPosts} />
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={newsFeed.length}
