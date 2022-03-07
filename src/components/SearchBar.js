@@ -1,12 +1,27 @@
 import React from "react";
 
-export default function SearchBar({ searchInput, setSearchInput, searchUrl }) {
+export default function SearchBar({ searchInput, setSearchInput, newsFeed, setNewsFeed }) {
+ 
+ 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    const filteredData = newsFeed.filter((item) => {
+      
+      if (item.title !== '' && item.title !== null){
+        if (item.title.toLowerCase().includes(searchInput.toLowerCase()))
+        {
+          return item;
+        }
+      }else if (searchInput === ''){
+        return item;
+      }  
+    })
+    setNewsFeed(filteredData);
+    e.preventDefault(); 
   };
 
-  const handleChange = ({ target }) => {
-    setSearchInput(target.value);
+ 
+  const handleChange = ({ target }) => {  
+    setSearchInput(target.value);    
   };
 
   return (
