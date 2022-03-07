@@ -1,4 +1,21 @@
 import React from "react";
+import { Button, Stack } from "@mui/material";
+import { styled } from "@mui/material/styles";
+
+const Buttonx = styled(Button)({
+  "&:hover": {
+    borderColor: "#0062cc",
+    boxShadow: "none",
+  },
+  "&:active": {
+    boxShadow: "none",
+    backgroundColor: "#0062cc",
+    borderColor: "#005cbf",
+  },
+  "&:focus": {
+    boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
+  },
+});
 
 const Pagination = ({
   postsPerPage,
@@ -15,16 +32,22 @@ const Pagination = ({
 
   return (
     <nav>
-      <span>
-        <h3>Pages:</h3>
-      </span>
-      <button onClick={() => previousPage()}>Prev</button>
-      {pages.map((page) => (
-        <button key={page} onClick={() => changePage(page)}>
-          {page}
-        </button>
-      ))}
-      <button onClick={() => nextPage(pages.length)}>Next</button>
+
+      <Stack
+        direction="row"
+        justifyContent="space-evenly"
+        alignItems="center"
+        spacing={2.5}
+      >
+        <Buttonx onClick={() => previousPage()}>Prev</Buttonx>
+        {pages.map((page) => (
+          <Buttonx key={page} onClick={() => changePage(page)}>
+            {page}
+          </Buttonx>
+        ))}
+        <Buttonx onClick={() => nextPage(pages.length)}>Next</Buttonx>
+      </Stack>
+
     </nav>
   );
 };
